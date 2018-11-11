@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li>
-                <a href="./?view=reservations">
+                <a href="{{ route('citaIndex') }}">
                     <i class="fa fa-calendar"></i>
                     <p>Citas</p>
                 </a>
@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li>
-                <a href="./?view=users">
+                <a href="{{ route('userIndex') }}">
                     <i class="fa fa-users"></i>
                     <p>Usuarios</p>
                 </a>

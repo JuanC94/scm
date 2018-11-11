@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" data-background-color="blue">
                 <h4 class="title">{{ $title }}</h4>
             </div>
             <div class="card-content table-responsive">
@@ -31,6 +31,7 @@
                             <td>{{ $paciente->email }}</td>
                             <td>{{ $paciente->telefono }}</td>
                             <td>
+                                <a href="{{ route('citaPacienteView', ['paciente_id' => $paciente->id]) }}" class="btn btn-primary btn-xs">Ver citas</a>
                                 <a href="{{ route('pacienteEdit', ['id' => $paciente->id]) }}" class="btn btn-warning btn-xs">Editar</a>
                                 <a href="{{ route('pacienteDelete', ['id' => $paciente->id]) }}" class="btn btn-danger btn-xs" onclick="return confirm('¿Estas seguro que deseas eliminar el paciente?')">Eliminar</a>
                             </td>

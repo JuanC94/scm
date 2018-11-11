@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Redirect;
 
 class MedicoController extends Controller
 {
-    private $medicos;
+    protected $medicos;
 
     private $especialidades;
 
     public function __construct(Medico $medico)
     {
+        $this->middleware('auth');
         $this->medicos = $medico;
         $this->especialidades = [
             'Pediatra' => 'Pediatra',

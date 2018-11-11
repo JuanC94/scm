@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class PacienteController extends Controller
 {
-    private $pacientes;
+    protected $pacientes;
 
     public function __construct(Paciente $paciente)
     {
+        $this->middleware('auth');
         $this->pacientes = $paciente;
     }
 

@@ -19,6 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['prefix' => 'users'], function () {
+    Route::get('/', [
+        'as'   => 'userIndex',
+        'uses' => 'UserController@index'
+    ]);
+});
+
 Route::group(['prefix' => 'pacientes'], function () {
     Route::get('/', [
         'as'   => 'pacienteIndex',
@@ -81,4 +88,48 @@ Route::group(['prefix' => 'medicos'], function () {
         'as'   => 'medicoDelete',
         'uses' => 'MedicoController@delete'
     ]);
+});
+
+
+Route::group(['prefix' => 'citas'], function () {
+    Route::get('/', [
+        'as'   => 'citaIndex',
+        'uses' => 'CitaController@index'
+    ]);
+
+    Route::get('/create', [
+        'as'   => 'citaCreate',
+        'uses' => 'CitaController@create'
+    ]);
+
+    Route::post('/store', [
+        'as'   => 'citaStore',
+        'uses' => 'CitaController@store'
+    ]);
+
+    Route::get('/{id}/edit', [
+        'as'   => 'citaEdit',
+        'uses' => 'CitaController@edit'
+    ]);
+
+    Route::post('/{id}/update', [
+        'as'   => 'citaUpdate',
+        'uses' => 'CitaController@update'
+    ]);
+
+    Route::get('/{id}/delete', [
+        'as'   => 'citaDelete',
+        'uses' => 'CitaController@delete'
+    ]);
+
+    Route::get('/{paciente_id}/citas-paciente', [
+        'as'   => 'citaPacienteView',
+        'uses' => 'CitaController@view_citas_paciente'
+    ]);
+
+    Route::get('/{medico_id}/citas-medico', [
+        'as'   => 'citaMedicoView',
+        'uses' => 'CitaController@view_citas_medico'
+    ]);
+
 });
